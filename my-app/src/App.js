@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
-//import './App.css';
+import './index.css';
 import apiKey from './components/config.js';
 import axios from 'axios';
 import Nav from './components/Nav.js';
-import Photos from './component/Photos.js';
+import Gallery from './components/Photos.js';
 import NotFound from './components/NotFound.js';
-import SearchForm from './components/SearchForm.js'
+import SearchForm from './components/SearchForm.js';
 
 
 import {
@@ -23,22 +22,26 @@ export default class App extends Component {
     super();
     this.state = {
       photos: [],
-      loading: true
+      sunsets: [],
+      waterfalls: [],
+      rainbows: [],
+      // buttonSearch: [],
+      isLoading: [],
     }
   }
 
 
   componentDidMount() {
-    this.performSearch()
+    this.setState({
+      isLoading: false
 
-  }
+    });
 
-
-  performSearch = (query) => {
-    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=sunsets&extras=url_o&per_page=24&page=&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
-          photos: response.data.photos.photo, isLoaded: true
+          sunsets: response.data.results,
+          isLoading: true
 
         });
       })
@@ -46,28 +49,31 @@ export default class App extends Component {
       .catch(error => {
         console.log('Error fetching and parsing data', error);
       })
+
+
+
   }
   render() {
     return (
       <BrowserRouter>
         <div className="container">
-          <SearchForm onSearch={this.performSerach} />
+          <SearchForm onSearch={this.performSearch} />
           <Nav istrue={this.isTrue} onClick={this.performSearch} />
           {
-            (this.state.loading)
-              ? <h3>Loading...</h3>
-              :
-              <Switch>
-                <Route exact path="/" render={() => <Photos title="Photos" data={this.state.imgs} />} />
-                <Route path="/sunsets" render={() => <Photos title="Sunsets" data={this.state.imgs} />} />
-                <Route path="/waterfalls" render={() => <Photos title="Waterfalls" data={this.state.imgs} />} />
-                <Route path="/raindows" render={() => <Photos title="Rainbows" data={this.state.imgs} />} />
-                <Route path="/:query" render={({ match }) => <Photos testtt={match} search={this.performSearch(match.params.query)} title={match.params.query.toUpperCase()} data={this.state.imgs} />} />
-                <Route component={NotFound} />
-              </Switch>
+            //(this.state.loading)
+            //? <h3>Loading...</h3>
+            //:
+            <Switch>
+              <Route exact path="/" render={(props) => <Gallery {...props} title="Sunsets" data={this.state.sunsets} />} />
+              <Route path="/sunsets" render={(props) => <Gallery {...props} title="Sunsets" data={this.state.sunsets} />} />
+              <Route path="/waterfalls" render={(props) => <Gallery {...props} title="Waterfalls" data={this.state.waterfalls} />} />
+              <Route path="/rainbows" render={(props) => <Gallery {...props} title="Rainbows" data={this.state.rainbows} />} />
+              {/* <Route path="/:query" render={({ match }) => <Gallery test={match} search={this.performSearch(match.params.query)} title={match.params.query.toUpperCase()} data={this.state.buttonSearch} />} /> */}
+              <Route component={NotFound} />
+            </Switch>
           }
         </div>
-      </BrowserRouter >
+      </BrowserRouter>
     );
   }
 }

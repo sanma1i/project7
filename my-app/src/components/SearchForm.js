@@ -5,15 +5,15 @@ export default class SearchForm extends Component {
     state = {
         searchText: ''
     }
-    onSearchChange = e => {
+    onSearchChange = (e) => {
         this.setState({ searchText: e.target.value });
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        //this.props.onSearch(this.query.value);
-        e.currentTarget.reset();
-    }
+    // handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     this.props.onSearch(this.query.value);
+    //     e.currentTarget.reset();
+    // }
     render() {
         return (
             <form className="search-form" onSubmit={this.handleSubmit}>
