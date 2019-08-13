@@ -1,29 +1,12 @@
-import React from 'react';
-import Photos from './Photos.js';
-// import NotFound from './NotFound.js';
+import React from 'react'
 
 const Gallery = (props) => {
-    const results = props.data;
-    let photos
-
-    // if (props.isLoading) {
-    photos = results.map(photo =>
-        <Photos url={
-            photo.url_o
-        }
-            key={photo.id}
-        />
-    );
-
-    // } else if (props.isLoading === false) {
-    //     photos = <NotFound />
-    // }
-
     return (
-        <div className="photo-container" >
-            <h2>{props.title}</h2>
-            <ul>{photos} </ul>
-        </div>
+        <li>
+            <img src={props.url} alt="" />
+        </li>
     );
 };
+
+
 export default Gallery;

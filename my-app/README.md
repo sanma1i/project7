@@ -1,3 +1,15 @@
+In this project I created a gallery of 24 pictures of sunsets, waterfalls and rainbows. I used React and requested API from Flickr to display the pictures. This project was made with creat-react-app and react-router-dom.
+To run this program you need to create config.js and put it in the /src/components folder.
+The config.js must contain:
+
+const apiKey = 'YOUR API KEY';
+export default apiKey;
+
+You will also need to run it in the terminal:
+npm install.
+Run npm start and view in localhost:3000.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
