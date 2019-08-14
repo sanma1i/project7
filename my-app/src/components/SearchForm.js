@@ -1,4 +1,5 @@
 import React from 'react';
+//This method will make an API Request for the search term to the URL
 
 
 const SearchForm = (props) => {

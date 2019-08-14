@@ -1,10 +1,10 @@
+//Importing from React and other components
 import React, { Component } from 'react';
 import apiKey from './components/config.js';
 import axios from 'axios';
 import NotFound from './components/NotFound.js';
 import Header from './components/Header.js';
 import Photos from './components/Photos.js';
-
 
 import {
   Route,
@@ -17,7 +17,7 @@ import {
 
 
 
-
+//Setting states to an empty array
 export default class App extends Component {
   state = {
     search: [],
@@ -26,7 +26,7 @@ export default class App extends Component {
     rainbows: [],
     loading: null
   };
-
+  //Buttons displaying three different options 
   imageChoices = ['sunsets', 'waterfalls', 'rainbows'];
 
 
@@ -96,7 +96,7 @@ export default class App extends Component {
           />
           <Route component={NotFound} />
 
-        </Switch >
+        </Switch>
       </div>
 
     );

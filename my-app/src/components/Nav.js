@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+//Navigation buttons that will take you to different displays of pictures
 const Nav = () => (
     <nav className="main-nav">
         <ul>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Gallery from './Gallery';
 
+// Function that provides the images
 const Photos = props => {
     let image = props.data.map((image) => (
         < Gallery
