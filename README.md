@@ -1,7 +1,7 @@
 # project7
 project7
 In this project I created a gallery of 24 pictures of sunsets, waterfalls and rainbows. I used React and requested API from Flickr to display the pictures. This project was made with creat-react-app and react-router-dom.
-To run this program you need to create config.js and put it in the /src/components folder.
+To run this program you need to create config.js and put it in the /src/components file.
 The config.js must contain:
 
 const apiKey = 'YOUR API KEY';
